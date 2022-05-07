@@ -118,6 +118,6 @@ def new_data():
 if __name__ == '__main__':
     filename1 = 'Youtube.csv'
     filename2 = 'new_youtube.csv'
-    key = '@@@@@@@@@@@@'
+    key = 'AIzaSyDnL_KURT_fa8YoGjWixDl3D5NME_D5M8U'
     # #数据筛选
     new_data()

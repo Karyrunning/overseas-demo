@@ -133,7 +133,7 @@ if __name__ == '__main__':
     create_filename = 'Youtube.csv'
 
     new_filename = 'new_youtube.csv'
-    key = '@@@@@@@@@@@@'
+    key = 'AIzaSyDnL_KURT_fa8YoGjWixDl3D5NME_D5M8U'
     new_df = pd.DataFrame()
     new_df['video_date'] = ['video_date']
     new_df['video_head'] = ['video_head']

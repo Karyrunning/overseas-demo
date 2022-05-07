@@ -1,6 +1,14 @@
 import pandas as pd
 from matplotlib import pyplot as plt
 import numpy as np
+
+
+def hbzz(x):
+    x = float(x)
+    x = x * 100
+    x = '%0.3lf' %x + "%"
+    return x
+
 df = pd.read_csv('./input/Youtube.csv', encoding="UTF-16",sep='\t',parse_dates=['Date'], index_col ="Date")
 new_df = df['youtube_view'].resample('D').sum()
 new_df1 = df['youtube_view']["2022-04-07"].resample('1H').sum()
@@ -12,9 +20,7 @@ new_df2.index = new_df2['comment_date']
 new_df3 = new_df2['commment_number'].resample('D').sum()
 
 
-new_df.to_csv('./output/总时间播放量.csv')
-new_df1.to_csv('./output/当天播放量.csv')
-new_df3.to_csv('./output/总时间评论量.csv')
+
 #总体播放量增长趋势
 def line1():
     x_data = list(new_df.index)
@@ -32,10 +38,20 @@ def line1():
     plt.savefig('./output/总体播放量.png')
     plt.show()
 
+    data1 = pd.DataFrame()
+    data1['date'] = x_data
+    data1['youtube_view'] = y_data
+    data1['huanbi'] = data1['youtube_view'].pct_change()
+    data1.fillna(0, inplace=True)
+    data1['huanbi'] = data1['huanbi'].apply(hbzz)
+    data1.to_csv('./output/原始数据/总时间播放量.csv')
+
+
 #当天播放量增长趋势
 def line2():
     x_data = list(new_df1.index)
     y_data = list(new_df1.values)
+
     print(np.vectorize(lambda s: s.strftime('%Y-%m-%d %H:%M:%S'))(x_data))
     print(y_data)
     plt.figure(figsize=(12,9),dpi=300)
@@ -48,6 +64,14 @@ def line2():
     plt.grid()
     plt.savefig('./output/当天播放.png')
     plt.show()
+
+    data1 = pd.DataFrame()
+    data1['date'] = x_data
+    data1['youtube_view'] = y_data
+    data1['huanbi'] = data1['youtube_view'].pct_change()
+    data1.fillna(0, inplace=True)
+    # data1['huanbi'] = data1['huanbi'].apply(hbzz)
+    data1.to_csv('./output/原始数据/当天播放量.csv')
 
 #总体评论趋势增长
 def line3():
@@ -65,6 +89,14 @@ def line3():
     plt.grid()
     plt.savefig('./output/总体评论量.png')
     plt.show()
+
+    data1 = pd.DataFrame()
+    data1['date'] = x_data
+    data1['youtube_view'] = y_data
+    data1['huanbi'] = data1['youtube_view'].pct_change()
+    data1.fillna(0, inplace=True)
+    data1['huanbi'] = data1['huanbi'].apply(hbzz)
+    data1.to_csv('./output/原始数据/总时间评论量.csv')
 
 if __name__ == '__main__':
     line1()
