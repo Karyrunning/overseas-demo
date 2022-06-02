@@ -1,2 +1,4 @@
-# 油管数据分析实战
-这里是YouTube的数据分析实战项目
+# 这里主要负责处理海外平台的数据
+
+目前的平台为YouTube、Reddit、sensor Tower
+
