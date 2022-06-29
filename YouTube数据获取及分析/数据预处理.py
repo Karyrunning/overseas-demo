@@ -6,6 +6,11 @@ from googletrans import Translator
 
 data = pd.read_csv('./output/new_youtube.csv')
 
+stop_words = []
+with open('常用英文停用词(NLP处理英文必备)stopwords.txt','r',encoding='utf-8')as f:
+    lines = f.readlines()
+    for line in lines:
+        stop_words.append(line.strip().replace("'",""))
 
 def preprocess_word(word):
     # Remove punctuation
@@ -64,9 +69,13 @@ def clean_text(tweet):
     tweet = handle_emojis(tweet)
     # Replace multiple spaces with a single space
     tweet = re.sub(r'\s+', ' ', tweet)
+    # 去掉数字
+    tweet = re.sub(r'\d+', ' ', tweet)
+    # 标点符号
+    tweet = re.sub(r'[^A-Z^a-z^0-9^]', ' ', tweet)
     # processed_tweet.append(tweet)
     words = tweet.lower().split()
-    words = [w for w in words]
+    words = [w for w in words if w not in stop_words]
     for word in words:
         word = preprocess_word(word)
         # if is_valid_word(word):
@@ -75,6 +84,7 @@ def clean_text(tweet):
         return ' '.join(processed_tweet)
     else:
         return np.NAN
+
 
 
 data['comment_text_new'] = data['content']

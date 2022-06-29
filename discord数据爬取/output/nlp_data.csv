@@ -1,0 +1,18 @@
+﻿,发文时间,内容信息,new_comment,scores,compound,Negtive,Postive,Neutral,comp_score
+0,2022-06-23T15:54:05.149000+00:00,"A new legend is coming to Apex Legends Mobile, meet **Fade** by checking out their intro video within the tweet below! https://twitter.com/playapexmobile/status/1539986650138157056?s=21&t=6mGh9GcQozcugOubtahAXg ",legend coming apex legends mobile meet fade checking intro video tweet,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+1,2022-06-23T14:36:11.597000+00:00,fpp plat 5 middle east,fpp plat middle east,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+2,2022-06-23T14:17:58.654000+00:00,Congrats  ! You've unlocked **Chat Level 1!**,congrats unlocked chat level,"{'neg': 0.0, 'neu': 0.469, 'pos': 0.531, 'compound': 0.5267}",0.5267,0.0,0.531,0.469,pos
+3,2022-06-23T13:48:26.867000+00:00,bots,bots,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+4,2022-06-23T13:48:24.480000+00:00,fighting,fighting,"{'neg': 1.0, 'neu': 0.0, 'pos': 0.0, 'compound': -0.3612}",-0.3612,1.0,0.0,0.0,neg
+5,2022-06-23T13:48:21.398000+00:00,enjoy,enjoy,"{'neg': 0.0, 'neu': 0.0, 'pos': 1.0, 'compound': 0.4939}",0.4939,0.0,1.0,0.0,pos
+6,2022-06-23T12:46:30.956000+00:00,Any comments,comments,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+7,2022-06-23T12:46:23.330000+00:00,Guys I just started Apex legends,guys started apex legends,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+8,2022-06-23T11:27:14.470000+00:00,Any1 knows a good vid editing app?,vid editing app,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+9,2022-06-23T09:53:57.056000+00:00,"Biggest fight, lol",biggest fight lol,"{'neg': 0.406, 'neu': 0.156, 'pos': 0.437, 'compound': 0.0516}",0.0516,0.406,0.437,0.156,pos
+10,2022-06-23T06:19:59.131000+00:00,I do im building alligator cages ,building alligator cages,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+11,2022-06-23T05:06:48.072000+00:00,Congrats  ! You've unlocked **Chat Level 5!**,congrats unlocked chat level,"{'neg': 0.0, 'neu': 0.469, 'pos': 0.531, 'compound': 0.5267}",0.5267,0.0,0.531,0.469,pos
+12,2022-06-23T01:11:46.482000+00:00,Congrats  ! You've unlocked **Chat Level 1!**,congrats unlocked chat level,"{'neg': 0.0, 'neu': 0.469, 'pos': 0.531, 'compound': 0.5267}",0.5267,0.0,0.531,0.469,pos
+13,2022-06-23T01:11:46.308000+00:00,Top 10 unsolved mysteries?,top unsolved mysteries,"{'neg': 0.0, 'neu': 0.526, 'pos': 0.474, 'compound': 0.2023}",0.2023,0.0,0.474,0.526,pos
+14,2022-06-23T01:03:46.386000+00:00,I always question why mobile gets REAL content than the actual game,question mobile real content actual game,"{'neg': 0.0, 'neu': 1.0, 'pos': 0.0, 'compound': 0.0}",0.0,0.0,0.0,1.0,neu
+15,2022-06-23T00:34:26.228000+00:00,The benefits of Bunny Hopping will be removed in the next update!Source: https://twitter.com/playapexmobile/status/1539743481978990593?s=21&t=MUXzWE4xslw3fyWDLRQ30A ,benefits bunny hopping removed update source,"{'neg': 0.0, 'neu': 0.658, 'pos': 0.342, 'compound': 0.3818}",0.3818,0.0,0.342,0.658,pos
+16,2022-06-22T22:44:08.376000+00:00,Glad to hear! 😄,glad hear,"{'neg': 0.0, 'neu': 0.25, 'pos': 0.75, 'compound': 0.4588}",0.4588,0.0,0.75,0.25,pos
