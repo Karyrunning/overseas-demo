@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-df = pd.read_csv('./output/sum_youtube.csv')
+df = pd.read_csv('./output/sum_new_lucky draw-评论数据.csv')
 
 comp_score = df['comp_score'].value_counts()
 x_data = list(comp_score.index)
@@ -18,10 +18,10 @@ plt.style.use('fast')
 plt.figure(figsize=(9,6),dpi=300)
 plt.bar(x_data,y_data,color='#3498DB')
 plt.rcParams['font.sans-serif'] = ['SimHei']
-plt.title("正向与负向占比")
+plt.title("lucky draw-正向与负向占比")
 plt.xlabel("类别")
 plt.ylabel("数量")
-plt.savefig('./output/正向与负向占比.jpg')
+plt.savefig('./output/lucky draw-正向与负向占比.jpg')
 plt.show()
 
 

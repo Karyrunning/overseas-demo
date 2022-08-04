@@ -1,30 +1,31 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-df = pd.read_excel('PUBGMOBILE Tweets.xlsx',sheet_name='有回复的Tweets和官方的回帖')
-
-data = df[['Replies','Retweets','Likes']]
-ss = StandardScaler()
-data_x = ss.fit_transform(data)
-
-def zanbi(x,y,l):
-    try:
-        z = x + y + l
-        return float(z)
-    except:
-        return np.nan
-
-list_zb = []
-
-for j,k,o in data_x:
-    z = zanbi(j,k,o)
-    list_zb.append(z)
-
-df['zanbi'] = list_zb
-
-new_df = df.sort_values(by=['zanbi'],ascending=False)
-new_df.to_csv('1.csv')
-id = new_df['Tweet Id'][:10]
+# df = pd.read_excel('PUBGMOBILE Tweets.xlsx',sheet_name='有回复的Tweets和官方的回帖')
+#
+# data = df[['Replies','Retweets','Likes']]
+# ss = StandardScaler()
+# data_x = ss.fit_transform(data)
+#
+# def zanbi(x,y,l):
+#     try:
+#         z = x + y + l
+#         return float(z)
+#     except:
+#         return np.nan
+#
+# list_zb = []
+#
+# for j,k,o in data_x:
+#     z = zanbi(j,k,o)
+#     list_zb.append(z)
+#
+# df['zanbi'] = list_zb
+#
+# new_df = df.sort_values(by=['zanbi'],ascending=False)
+# new_df.to_csv('1.csv')
+# id = new_df['Tweet Id'][:10]
+id = ['1546882950435901446','1546845285225316352','1546878965117513729','1546930895482851330']
 str1 = ''
 for i in id:
     str1 += 'twitterThread: {} or '.format(i)

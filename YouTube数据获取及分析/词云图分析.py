@@ -34,15 +34,15 @@ def tokenize_only(text):  # 分词器，仅分词
 
 def main1():
     # 绘制词云图
-    df = pd.read_csv('./output/sum_youtube.csv')
+    df = pd.read_csv('./output/sum_new_lucky draw-评论数据.csv')
     sum_cotent = []
-    df.to_csv('./output/词云总表.csv')
-    df['translate_content_new'] = df['translate_content_new'].apply(tokenize_only)
-    df['translate_content_new'].astype('str')
+    # df.to_csv('./output/词云总表.csv')
+    df['comment_text_new'] = df['comment_text_new'].apply(tokenize_only)
+    df['comment_text_new'].astype('str')
 
     stop_words.extend(new_stop_words)
 
-    y_data1 = list(df['translate_content_new'])
+    y_data1 = list(df['comment_text_new'])
     for d in y_data1:
         for i in d:
             if i not in stop_words:
@@ -85,15 +85,15 @@ def main1():
 def main2():
     # 绘制词云图
     sum_cotent = []
-    df = pd.read_csv('./output/sum_youtube.csv')
+    df = pd.read_csv('./output/sum_new_lucky draw-评论数据.csv')
     df1 = df[df['comp_score'] == 'pos']
-    df1.to_csv('./output/正向总表.csv')
-    df1['translate_content_new'] = df1['translate_content_new'].apply(tokenize_only)
-    df1['translate_content_new'].astype('str')
+    # df1.to_csv('./output/正向总表.csv')
+    df1['comment_text_new'] = df1['comment_text_new'].apply(tokenize_only)
+    df1['comment_text_new'].astype('str')
 
     stop_words.extend(new_stop_words)
 
-    y_data1 = list(df1['translate_content_new'])
+    y_data1 = list(df1['comment_text_new'])
     for d in y_data1:
         for i in d:
             if i not in stop_words:
@@ -125,7 +125,7 @@ def main2():
                    background_color="white",
                    font_path=r"C:\Windows\Fonts\simhei.ttf",
                    width=1080, height=1920, random_state=42,
-                   mask=imread('./input/2.jpg', pilmode="RGB"))
+                   mask=imread('./input/2.png', pilmode="RGB"))
     wc.generate(contents_list)
     # 要读取的形状的图片
     wc.to_file("./output/pos-云图.jpg")
@@ -135,15 +135,15 @@ def main2():
 def main3():
     # 绘制词云图
     sum_cotent = []
-    df = pd.read_csv('./output/sum_youtube.csv')
+    df = pd.read_csv('./output/sum_new_lucky draw-评论数据.csv')
     df1 = df[df['comp_score'] == 'neg']
-    df1.to_csv('./output/负向总表.csv')
-    df1['translate_content_new'] = df1['translate_content_new'].apply(tokenize_only)
-    df1['translate_content_new'].astype('str')
+    # df1.to_csv('./output/负向总表.csv')
+    df1['comment_text_new'] = df1['comment_text_new'].apply(tokenize_only)
+    df1['comment_text_new'].astype('str')
 
     stop_words.extend(new_stop_words)
 
-    y_data1 = list(df1['translate_content_new'])
+    y_data1 = list(df1['comment_text_new'])
     for d in y_data1:
         for i in d:
             if i not in stop_words:
@@ -182,15 +182,15 @@ def main3():
 def main4():
     # 绘制词云图
     sum_cotent = []
-    df = pd.read_csv('./output/sum_youtube.csv')
+    df = pd.read_csv('./output/sum_new_lucky draw-评论数据.csv')
     df1 = df[df['comp_score'] == 'neu']
-    df1.to_csv('./output/中立总表.csv')
-    df1['translate_content_new'] = df1['translate_content_new'].apply(tokenize_only)
-    df1['translate_content_new'].astype('str')
+    # df1.to_csv('./output/中立总表.csv')
+    df1['comment_text_new'] = df1['comment_text_new'].apply(tokenize_only)
+    df1['comment_text_new'].astype('str')
 
     stop_words.extend(new_stop_words)
 
-    y_data1 = list(df1['translate_content_new'])
+    y_data1 = list(df1['comment_text_new'])
     for d in y_data1:
         for i in d:
             if i not in stop_words:
@@ -220,7 +220,7 @@ def main4():
                    background_color="white",
                    font_path=r"C:\Windows\Fonts\simhei.ttf",
                    width=1080, height=1920, random_state=42,
-                   mask=imread('./input/1.png', pilmode="RGB"))
+                   mask=imread('./input/4.png', pilmode="RGB"))
     wc.generate(contents_list)
     # 要读取的形状的图片
     wc.to_file("./output/neu-云图.png")

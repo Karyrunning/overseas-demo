@@ -5,7 +5,7 @@ from tqdm import tqdm
 import concurrent.futures
 from lxml import etree
 
-df = pd.read_csv('./input/Apex_Mobile - May 26, 2022 - 8 02 02 PM.csv',encoding='utf-16',sep='\t')
+df = pd.read_csv('./input/division_mobile - Jul 8, 2022 - 11 34 45 AM.csv',encoding='utf-16',sep='\t')
 
 
 def chuli_url(x):

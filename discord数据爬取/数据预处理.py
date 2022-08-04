@@ -3,9 +3,10 @@ import re
 import numpy as np
 from tqdm import tqdm
 import time
+from nltk.stem.snowball import SnowballStemmer  # 返回词语的原型，去掉ing等
+stemmer = SnowballStemmer("english")
 
-
-data = pd.read_csv('./input/原始数据.csv')
+data = pd.read_csv('./output/TDM 07.21.10-08.01.12.csv')
 
 stop_words = []
 with open('常用英文停用词(NLP处理英文必备)stopwords.txt','r',encoding='utf-8')as f:
@@ -79,7 +80,7 @@ def clean_text(tweet):
     words = tweet.lower().split()
     words = [w for w in words if w not in stop_words]
     for word in words:
-        word = preprocess_word(word)
+        word = preprocess_word(stemmer.stem(word))
         # if is_valid_word(word):
         processed_tweet.append(word)
     if len(processed_tweet) != 0:
@@ -92,6 +93,6 @@ data['new_comment'] = data['内容信息']
 data['new_comment'] = data['new_comment'].apply(gettext)
 data['new_comment'] = data['new_comment'].apply(preprocess_word)
 data['new_comment'] = data['new_comment'].apply(clean_text)
-data = data.dropna(how='any')
-new_data = data.reset_index(drop=True)
-new_data.to_csv('./output/new_data.csv',encoding="utf-8-sig",sep=',',index=None)
+ # data = data.dropna(how='any')
+# new_data = data.reset_index(drop=True)
+data.to_csv('./output/new_data.csv',encoding="utf-8-sig",sep=',',index=None)

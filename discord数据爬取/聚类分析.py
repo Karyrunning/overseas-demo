@@ -10,7 +10,7 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
 df = pd.read_csv('./output/new_data.csv')
-
+df = df.dropna(subset=['new_comment'],axis=0)
 f = open('./input/kmeans-fenci.txt', 'w', encoding='utf-8-sig')
 for line in tqdm(df['new_comment']):
     tokens = nltk.word_tokenize(line)
@@ -55,9 +55,9 @@ print('Features length: ' + str(len(word)))
 
 print('Start Kmeans:')
 
-number = 4
+number = 3
 
-clf = KMeans(n_clusters=number)
+clf = KMeans(init='k-means++',n_clusters=number, n_init=10)
 print(clf)
 pre = clf.fit_predict(weight)
 print(pre)

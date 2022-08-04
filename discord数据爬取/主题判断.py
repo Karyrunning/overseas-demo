@@ -8,7 +8,7 @@ import itertools
 
 def lda_tfidf():
     df = pd.read_csv('./output/new_data.csv')
-
+    df = df.dropna(subset=['new_comment'], axis=0)
     fr = open('./input/kmeans-fenci.txt', 'r', encoding='utf-8')
     train = []
 
@@ -87,8 +87,8 @@ def lda_tfidf():
     plt.show()
 
     topic_lda = word_k.index(min(word_k)) + 1
-
-    lda = models.LdaModel(corpus=corpus, id2word=dictionary, num_topics=2)
+    print(topic_lda)
+    lda = models.LdaModel(corpus=corpus, id2word=dictionary, num_topics=5)
 
     list3 = []
     list2 = []

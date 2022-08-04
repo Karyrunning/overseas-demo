@@ -6,6 +6,7 @@ import urllib.parse as p
 import pandas as pd
 import os
 import pickle
+import re
 from tqdm import tqdm
 
 
@@ -87,10 +88,12 @@ def get_youtube_comments(url,maxResults=20,n_pages=2):
             break
         for item in items:
             comment = item["snippet"]["topLevelComment"]["snippet"]["textDisplay"]
+            comment1 = re.sub(r'(<.*?>)', '', comment)
+            comment2 = re.sub(r'(&#39;[a-zA-Z])', '', comment1)
             updated_at = item["snippet"]["topLevelComment"]["snippet"]["updatedAt"]
             like_count = item["snippet"]["topLevelComment"]["snippet"]["likeCount"]
             totalReplyCount = item["snippet"]["totalReplyCount"]
-            list_comment.append(comment)
+            list_comment.append(comment2)
             list_update.append(updated_at)
             list_like.append(like_count)
             list_reply.append(totalReplyCount)
@@ -111,6 +114,7 @@ def get_youtube_comments(url,maxResults=20,n_pages=2):
         print("*"*70)
 
     df2 = pd.DataFrame()
+    df2['YouTube'] = df2['YouTube']
     df2['视频链接'] = list_url
     df2['评论内容'] = list_comment
     df2['评论点赞'] = list_like
@@ -124,16 +128,24 @@ if __name__ == '__main__':
     # url = 'https://www.youtube.com/watch?v=2J7ZhmE7d_w'
     # get_youtube_comments(url,2,2)
     #返回的最大结果内容数量
-    result2 = 20
+    result2 = 50
     #返回的页数
-    page = 2
+    page = 1
     df2 = pd.DataFrame()
+    df2['YouTube'] = df2['YouTube']
     df2['视频链接'] = ['视频链接']
     df2['评论内容'] = ['评论内容']
     df2['评论点赞'] = ['评论点赞']
     df2['评论回复'] = ['评论回复']
     df2['视频时间'] = ['视频时间']
     df2.to_csv('./output/评论数据.csv',mode='w',encoding='utf-8-sig', sep=',', index=None,header=None)
-    df = pd.read_csv('./output/Youtube.csv')
-    for url in tqdm(df['视频链接'][0:2]):
+    # df = pd.read_csv('./output/Youtube.csv')
+    # df = df.sort_values(by=['观看次数'],ascending=False)
+    # for url,number in tqdm(zip(df['链接'],df['评论数'])):
+    #     if number != 0:
+    #         # page = int(number / 10)
+    #         get_youtube_comments(url, result2, page)
+    #     else:
+    #         pass
+    for url in tqdm(['https://www.youtube.com/watch?v=i130uKnsgRc']):
         get_youtube_comments(url, result2, page)

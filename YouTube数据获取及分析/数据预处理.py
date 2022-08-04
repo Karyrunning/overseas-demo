@@ -4,7 +4,7 @@ import numpy as np
 from tqdm import tqdm
 from googletrans import Translator
 
-data = pd.read_csv('./output/new_youtube.csv')
+data = pd.read_csv('./input/luckdraw-评论数据.csv')
 
 stop_words = []
 with open('常用英文停用词(NLP处理英文必备)stopwords.txt','r',encoding='utf-8')as f:
@@ -87,19 +87,15 @@ def clean_text(tweet):
 
 
 
-data['comment_text_new'] = data['content']
+data['comment_text_new'] = data['评论内容']
 data['comment_text_new'] = data['comment_text_new'].apply(gettext)
 data['comment_text_new'] = data['comment_text_new'].apply(preprocess_word)
 data['comment_text_new'] = data['comment_text_new'].apply(clean_text)
 data = data.dropna(how='any')
 new_data = data.reset_index(drop=True)
-new_data.to_csv('./output/new_youtube1.csv',encoding="utf-8-sig",sep=',')
+new_data.to_csv('./output/new_luckdraw-评论数据.csv',encoding="utf-8-sig",sep=',')
 
 
-# df1 = pd.DataFrame()
-# df1['translate_content'] = ['translate_content']
-# df1['translate_language'] = ['translate_language']
-# df1.to_csv('./output/store.csv', encoding="utf-8-sig",sep=',',mode='w',header=None,index=None)
 
 
 
