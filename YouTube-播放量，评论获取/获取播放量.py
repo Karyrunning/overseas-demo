@@ -16,6 +16,7 @@ def get_html(url):
     html = requests.get(url, headers=headers)
     if html.status_code == 200:
         content = html.text
+
         #获取观看数量
         view = re.compile('"allowRatings":.*?,"viewCount":"(\d+)","author"')
         views = view.findall(content)
@@ -24,7 +25,7 @@ def get_html(url):
         except:
             views = 0
         #获取点赞人数
-        accept = re.compile('"defaultText":\{"accessibility":\{"accessibilityData":\{"label":".*\d+ 人表示喜歡"\}\},"simpleText":"(.*\d+)"\},"toggledText"')
+        accept = re.compile('"defaultText":\{"accessibility":\{"accessibilityData":\{"label":".*?"\}\},"simpleText":"(.*?)"\},"toggledText"')
         accepts = accept.findall(content)
         try:
             accepts = accepts[0]
@@ -79,12 +80,15 @@ def get_html(url):
 
 
 def data_screen():
-    df = pd.read_csv('./input/{}'.format(input_filename),encoding='utf-16',sep='\t')
-    # csv内容筛选，选出全是YouTube的内容行
-    df1 = df[df['Source'] == 'Youtube']
-    # df1 = df1[df1['Engagement'] >= 1000]
-    new_df = df.drop_duplicates(subset=['URL'], keep='first')
-    data = data_screen1(data_screen1(new_df))
+    # df = pd.read_csv('./input/{}'.format(input_filename),encoding='utf-16',sep='\t')
+    # # csv内容筛选，选出全是YouTube的内容行
+    # df1 = df[df['Source'] == 'Youtube']
+    # # df1 = df1[df1['Engagement'] >= 1000]
+    # df = pd.read_excel('./input/{}'.format(input_filename))
+    df = pd.read_csv('./input/{}'.format(input_filename))
+    new_df = df.drop_duplicates(subset=['url'], keep='first')
+    data = new_df
+    # data = data_screen1(data_screen1(new_df))
     list_date = []
     list_view = []
     list_url = []
@@ -95,7 +99,7 @@ def data_screen():
     list_name = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as e:
         # 调用这个函数，用一个列表的形式把这个函数给保存下来
-        futuers = [e.submit(get_html, item) for item in data['URL']]
+        futuers = [e.submit(get_html, item) for item in data['url']]
         # 用叠带把这个函数的内容一个个打印出来
         for futuer in tqdm(concurrent.futures.as_completed(futuers)):
             timedates,url,views,accepts,comments,fans,titles,names = futuer.result()
@@ -130,7 +134,7 @@ def data_screen1(data):
 
 
 if __name__ == '__main__':
-    input_filename = 'Monster_Hunter_Mobile - Aug 2, 2022 - 5 15 10 PM.csv'
+    input_filename = '链接.csv'
     # 数据筛选
     data_screen()
 

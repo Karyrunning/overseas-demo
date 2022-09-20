@@ -114,7 +114,6 @@ def get_youtube_comments(url,maxResults=20,n_pages=2):
         print("*"*70)
 
     df2 = pd.DataFrame()
-    df2['YouTube'] = df2['YouTube']
     df2['视频链接'] = list_url
     df2['评论内容'] = list_comment
     df2['评论点赞'] = list_like
@@ -128,11 +127,10 @@ if __name__ == '__main__':
     # url = 'https://www.youtube.com/watch?v=2J7ZhmE7d_w'
     # get_youtube_comments(url,2,2)
     #返回的最大结果内容数量
-    result2 = 50
+    result2 = 100
     #返回的页数
-    page = 1
+    page = 3
     df2 = pd.DataFrame()
-    df2['YouTube'] = df2['YouTube']
     df2['视频链接'] = ['视频链接']
     df2['评论内容'] = ['评论内容']
     df2['评论点赞'] = ['评论点赞']
@@ -147,5 +145,5 @@ if __name__ == '__main__':
     #         get_youtube_comments(url, result2, page)
     #     else:
     #         pass
-    for url in tqdm(['https://www.youtube.com/watch?v=i130uKnsgRc']):
+    for url in tqdm(['https://www.youtube.com/watch?v=lDjQ_RHH01Q','https://www.youtube.com/watch?v=Z1lEkbbNYLo']):
         get_youtube_comments(url, result2, page)

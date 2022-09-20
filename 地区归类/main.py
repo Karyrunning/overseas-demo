@@ -12,4 +12,4 @@ for j,k in zip(df['国家'],df['地区']):
 df2 = pd.DataFrame()
 df2['国家'] = list_1
 df2['地区'] = list_2
-df2.to_csv('1.csv',encoding='utf-8-sig')
+df2.to_csv('3.csv',encoding='utf-8-sig')

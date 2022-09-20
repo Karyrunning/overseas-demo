@@ -1,1 +1,1 @@
-﻿(twitterThread: 1546882950435901446 or twitterThread: 1546845285225316352 or twitterThread: 1546878965117513729 or twitterThread: 1546930895482851330 ) not (POSTTYPE: rp or qt)
+﻿(twitterThread: 1559194771532431360 ) not (POSTTYPE: rp or qt)

@@ -23,9 +23,9 @@ from sklearn.preprocessing import StandardScaler
 # df['zanbi'] = list_zb
 #
 # new_df = df.sort_values(by=['zanbi'],ascending=False)
-# new_df.to_csv('1.csv')
+# new_df.to_csv('3.csv')
 # id = new_df['Tweet Id'][:10]
-id = ['1546882950435901446','1546845285225316352','1546878965117513729','1546930895482851330']
+id = ['1559194771532431360']
 str1 = ''
 for i in id:
     str1 += 'twitterThread: {} or '.format(i)

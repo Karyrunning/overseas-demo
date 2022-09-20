@@ -3,10 +3,10 @@ import re
 import numpy as np
 from tqdm import tqdm
 import time
-from nltk.stem.snowball import SnowballStemmer  # 返回词语的原型，去掉ing等
-stemmer = SnowballStemmer("english")
+# from nltk.stem.snowball import SnowballStemmer  # 返回词语的原型，去掉ing等
+# stemmer = SnowballStemmer("english")
 
-data = pd.read_csv('./output/TDM 07.21.10-08.01.12.csv')
+data = pd.read_csv('./output/清洗过后的数据.csv')
 
 stop_words = []
 with open('常用英文停用词(NLP处理英文必备)stopwords.txt','r',encoding='utf-8')as f:
@@ -80,7 +80,7 @@ def clean_text(tweet):
     words = tweet.lower().split()
     words = [w for w in words if w not in stop_words]
     for word in words:
-        word = preprocess_word(stemmer.stem(word))
+        # word = preprocess_word(stemmer.stem(word))
         # if is_valid_word(word):
         processed_tweet.append(word)
     if len(processed_tweet) != 0:

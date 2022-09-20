@@ -32,7 +32,8 @@ def main1():
     for token in tokens:
         if re.search('[a-zA-Z]', token):
             if token not in stop_words:
-                filtered_tokens.append(stemmer.stem(token))
+                filtered_tokens.append(token)
+                # filtered_tokens.append(stemmer.stem(token))
     d = {}
     for f in filtered_tokens:
         d[f] = d.get(f,0)+1

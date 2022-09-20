@@ -1,76 +1,57 @@
 import pandas as pd
-import re
 
-df = pd.read_csv('data.csv')
+df = pd.read_excel('YTB&Twitch标签讨论1.xlsx')
+df['时间'] = pd.to_datetime(df['发布日期'],format='%Y年%m月%d日')
+df.index = df['时间']
+df = df['2021-12-12':'2022-07-01']
 
-data1 = df['正面（一级标签+二级标签）']
-data2 = df['负面（一级标签+二级标签）']
 
-
-list1 = []
-for d in data1:
-    if 'nan' not in str(d):
-        name = re.compile('【(.*?)】')
-        type1 = name.findall(d)
-        for t in type1:
-            # t = t.replace('玩法内容', '内容玩法').replace('平台版本', '版本问题').replace('平台/版本', '版本问题').replace('遗留问题', '常规bug').replace('版本问题', '常规bug')
-            # t = t.replace('系统机制', '操作体验').replace('建议/期望', '建议/期待').replace('操作体验', '性能表现/网络表现')
-            list1.append(t)
+def main1(x):
+    x = str(x)
+    if 'K' in x:
+        x1 = x.replace('K','')
+        x1 = int(float(x1) * 1000)
+        return int(x1)
+    elif 'M' in x:
+        x1 = x.replace('M', '')
+        x1 = int(float(x1) * 1000000)
+        return int(x1)
     else:
-        pass
+        return float(x)
 
-list2 = []
-for d in data2:
-    if 'nan' not in str(d):
-        name = re.compile('【(.*?)】')
-        type1 = name.findall(d)
-        for t in type1:
-            t = t.replace('玩法内容','内容玩法').replace('平台版本','版本问题').replace('平台/版本','版本问题')
-            t = t.replace('遗留问题', '常规bug').replace('版本问题', '常规bug').replace('品质对比', '常规bug')
-            t = t.replace('美术呈现', '其他').replace('运营表现', '其他').replace('建议/期望', '其他')
-            list2.append(t)
-    else:
-        pass
 
-sum3 = int(len(list1)) + int(len(list2))
-print('正面占比:',(len(list1) / sum3))
-print('负面占比:',(len(list2) / sum3))
-d1 = {}
-for l in list1:
-    d1[l] = d1.get(l,0)+1
+def main2(x):
+    x = str(x).split('-')
+    x1 = str(x[0]) + '-' + str(x[1])
+    return x1
 
-key1 = []
-values1 = []
-for key,values in d1.items():
-    key1.append(key)
-    values1.append(values)
+df['点赞次数'] = df['点赞次数'].apply(main1)
+df['粉丝数量'] = df['粉丝数量'].apply(main1)
+df['时间1'] = df['时间'].apply(main2)
+df.to_csv('data.csv',encoding='utf-8-sig',index=False)
+# new_df = df.groupby('时间1').agg("sum")
+# new_df.to_csv('1.csv',encoding='utf-8-sig')
+# import datetime
+# from dateutil.relativedelta import relativedelta
+# df = pd.read_excel('原始数据表.xlsx')
+# df['时间'] = pd.to_datetime(df['YYDD（UTC-5）'])
+#
+# df['时间']=df['时间'].dt.week
+# list1 = []
+# for i in df['时间']:
+#     date = datetime.date(2022, 1, 1) + relativedelta(weeks=+i)
+#     print(date)
+#     date = str(date)
+#     if '2022-12' in date:
+#         date = date.replace('2022-12','2021-12')
+#         list1.append(date)
+#     else:
+#         list1.append(date)
 
-sum1 = sum(values1)
-dd1 = {}
-for k,v in zip(key1,values1):
-    bfb = '%0.2lf' %(v/sum1)
-    bfb1 = str(float(bfb) * 100) + "%"
-    dd1[k] = bfb1
-
-d2 = {}
-for l in list2:
-    d2[l] = d2.get(l,0)+1
-
-key2 = []
-values2 = []
-for key,values in d2.items():
-    key2.append(key)
-    values2.append(values)
-
-sum2 = sum(values2)
-dd2 = {}
-for k,v in zip(key2,values2):
-    bfb = '%0.2lf' %(v/sum2)
-    bfb1 = str(float(bfb) * 100) + "%"
-    dd2[k] = bfb1
-
-df2 = pd.DataFrame(dd1,index=[0]).T
-df2.to_csv('正面标签.csv',encoding='utf-8-sig')
-
-df3 = pd.DataFrame(dd2,index=[0]).T
-df3.to_csv('负面标签.csv',encoding='utf-8-sig')
+# df['时间1'] = list1
+# df.to_csv('1.csv',encoding='utf-8-sig')
+# print(df['时间'])
+# df.index = df['时间']
+# df['时间1'] = df['时间']
+# df['时间1'] = df['时间1'].resample('W')
+# print(df['时间1'])

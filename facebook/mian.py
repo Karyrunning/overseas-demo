@@ -94,5 +94,5 @@ for r in range(20):
 #
 # #将获得到的信息写入本地文档
 # df=pd.DataFrame({'post_time':post_time,'content':contents,'post_url':work_url})
-# df.to_csv('1.csv',encoding='utf-8-sig')
+# df.to_csv('3.csv',encoding='utf-8-sig')
 # print('Done!')
