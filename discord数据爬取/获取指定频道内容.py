@@ -26,9 +26,9 @@ user_agent = [
 
 #这里可能也要修改
 headers = {
-    "authorization": "OTU4MTk3NzMzNTY5NzQ5MDAy.GHqIIi.DFkwYshaqYTFsqqnfzaLe0JbtK9numsQ7YWMOM",
+    "authorization": "OTU4MTk3NzMzNTY5NzQ5MDAy.GE8rsq.0RQk617HXaxpZo_j3z6uD6SK96Lha0ddM7cXzE",
     "cookie": "__dcfduid=33e576e0af0b11ecacf421044cb0b85c; __sdcfduid=33e576e1af0b11ecacf421044cb0b85c3b11a81671047def08f144a9c4fea5e370d50311a16a60c0a9b852455c597243; _ga=GA1.2.746746656.1648522323; _gid=GA1.2.1084155933.1659600218; OptanonConsent=isIABGlobal=false&datestamp=Thu+Aug+04+2022+16%3A03%3A38+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=6.33.0&hosts=&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1&AwaitingReconsent=false; __cf_bm=3oA99UHQ32vwhpSIZvbqiVVj8yMwVUJkqYAOErRfK64-1659600230-0-AWLsn5/PLYYaSFHi478cEkSkY7FoCqPTRt3iM1nQ5WR+WU/n3sZgPmx8GFmrsNVE27cG42MWqBiosRSIzjtsB4VDH31KQDNWDxQ+itEeiQRwLkc6I3E1FzkSBYtOLFIpeg==",
-    "referer": "https://discord.com/channels/948237510914486303/948257420327657502",
+    "referer": "https://discord.com/channels/907132517331636246/907134045928980490",
     "sec-ch-ua": 'Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100',
     "sec-ch-ua-mobile": "?0",
     "sec-ch-ua-platform": "Windows",
@@ -38,7 +38,7 @@ headers = {
     "user-agent": random.choice(user_agent),
     "x-debug-options": "bugReporterEnabled",
     "x-discord-locale": "zh-CN",
-    "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InpoLUNOIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEwMy4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTAzLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLmhrLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbS5oayIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiIiwicmVmZXJyaW5nX2RvbWFpbl9jdXJyZW50IjoiIiwicmVsZWFzZV9jaGFubmVsIjoic3RhYmxlIiwiY2xpZW50X2J1aWxkX251bWJlciI6MTM3NTA2LCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ==",
+    "x-super-properties": "eyJvcyI6IldpbmRvd3MiLCJicm93c2VyIjoiQ2hyb21lIiwiZGV2aWNlIjoiIiwic3lzdGVtX2xvY2FsZSI6InpoLUNOIiwiYnJvd3Nlcl91c2VyX2FnZW50IjoiTW96aWxsYS81LjAgKFdpbmRvd3MgTlQgMTAuMDsgV2luNjQ7IHg2NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgQ2hyb21lLzEwMy4wLjAuMCBTYWZhcmkvNTM3LjM2IiwiYnJvd3Nlcl92ZXJzaW9uIjoiMTAzLjAuMC4wIiwib3NfdmVyc2lvbiI6IjEwIiwicmVmZXJyZXIiOiJodHRwczovL3d3dy5nb29nbGUuY29tLmhrLyIsInJlZmVycmluZ19kb21haW4iOiJ3d3cuZ29vZ2xlLmNvbS5oayIsInNlYXJjaF9lbmdpbmUiOiJnb29nbGUiLCJyZWZlcnJlcl9jdXJyZW50IjoiIiwicmVmZXJyaW5nX2RvbWFpbl9jdXJyZW50IjoiIiwicmVsZWFzZV9jaGFubmVsIjoic3RhYmxlIiwiY2xpZW50X2J1aWxkX251bWJlciI6MTUzNDgxLCJjbGllbnRfZXZlbnRfc291cmNlIjpudWxsfQ=="
 }
 
 def check_status(url):
@@ -56,18 +56,18 @@ def get_html():
     number = int(total / 25) +1
     list_number = [(j * 25) for j in range(0,number+1)]
     list_number = list_number[fw1:fw2]
-    # #阿拉伯
-    # list_channel = ['986607131644035108']
-    # channel_name = ['general']
-    # 拉美
-    # list_channel = ['991791247624781854', '991792315461025872', '994889246127161424']
-    # channel_name = ['chat-general-espanol', 'reporta-un-bug', 'sugerencias']
-    #巴西
-    list_channel = ['1004863310115651595', '986011017194663987', '986011017697959936','986007094908055573']
-    channel_name = ['report-bugs', 'sugestoes-e-feedbacks', 'duvidas','chat-aberto']
-    # #土耳其
-    # list_channel = []
-    # channel_name = []
+
+    # #菲律宾
+    list_channel = ['991233635799814194']
+    channel_name = ['chat']
+    # 印尼
+    # list_channel = ['1002393317939626144']
+    # channel_name = ['chat']
+
+    # # general
+    # list_channel = ['907134045928980490']
+    # channel_name = ['general-chat']
+
     d = {}
     for l,n in zip(list_channel,channel_name):
         d[l] = n
@@ -131,9 +131,9 @@ if __name__ == '__main__':
     #&max_id=1001881652428800000
     fw1 = 0
     fw2 = 200
-    name = '巴西14-22新数据'
+    name = '菲律宾新数据'
     #desc 最新数据 asc 最旧数据
-    url = 'https://discord.com/api/v9/guilds/978655279157747712/messages/search?min_id=1008042246144000000&max_id=1011303736934400000&sort_by=timestamp&sort_order=desc'
+    url = 'https://discord.com/api/v9/guilds/907132517331636246/messages/search?min_id=1034858948198400000'
     total = check_status(url)
     #频道ID
     df = pd.DataFrame()

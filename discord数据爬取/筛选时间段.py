@@ -8,14 +8,14 @@ import random
 translator = Translator()
 a = random.uniform(0.1,0.5)
 
-df1 = pd.read_csv('input/土耳其5-22旧数据.csv', encoding="utf-8-sig", parse_dates=True, index_col='发文时间')
+df1 = pd.read_csv('input/菲律宾新数据.csv', encoding="utf-8-sig", parse_dates=True, index_col='发文时间')
 # df2 = pd.read_csv('input/巴西11-13新数据.csv', encoding="utf-8-sig", parse_dates=True, index_col='发文时间')
 # df3 = pd.read_csv('input/巴西14-22旧数据.csv', encoding="utf-8-sig", parse_dates=True, index_col='发文时间')
 # df4 = pd.read_csv('input/巴西14-22新数据.csv', encoding="utf-8-sig", parse_dates=True, index_col='发文时间')
 data = pd.concat([df1],axis=0)
 
 df = data.tz_convert('Asia/Shanghai')
-df = df['2022-08-5':'2022-08-23']
+df = df['2022-10-27 12':'2022-10-28 12']
 df = df.drop_duplicates(keep='first')
 df = df.sort_values(by=['发文时间'],ascending=True)
 
@@ -45,5 +45,5 @@ new_df['发布者名字'] = list(df['发布者名字'])
 new_df['内容信息'] = list(df['内容信息'])
 new_df['机翻内容'] = ''
 new_df['被提及人'] = list(df['被提及人'])
-# new_df['频道'] = list(df['频道'])
-new_df.to_csv('./output/土耳其5-22.csv',encoding='utf-8-sig',index=False)
+new_df['频道'] = list(df['频道'])
+new_df.to_csv('./output/菲律宾.csv',encoding='utf-8-sig',index=False)

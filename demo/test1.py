@@ -1,55 +1,39 @@
 import pandas as pd
+from matplotlib import pyplot as plt
+df1 = pd.read_csv('咩咩启示录 - Oct 12, 2022 - 3 20 36 PM.csv',encoding="UTF-16",sep='\t',parse_dates=['Date'], index_col ="Date")
+df2 = pd.read_csv('咩咩启示录 - Oct 12, 2022 - 3 20 36 PM.csv',encoding="UTF-16",sep='\t')
+df1['数量'] = 1
 
-df1 = pd.read_excel('tarkov Tweets.xlsx')
-df2 = pd.read_excel('塔科夫官推-内容简单标签v1.xlsx')
-
-
-def t_id(x):
-    x = str(x)
-    x1 = x.replace("'","")
-    return int(x1)
-
-
-df2['Tweet Id'] = df2['Tweet Id'].apply(t_id)
-
-d1 = {}
-d2 = {}
-d3 = {}
-
-for j,k,l,h in zip(df1['Tweet Id'],df1['Replies'],df1['Retweets'],df1['Likes']):
-    d1[j] = k
-    d2[j] = l
-    d3[j] = h
 
 list1 = []
-list2 = []
-list3 = []
-for i in df2['Tweet Id']:
-    try:
-        number1 = d1[i]
-        list1.append(number1)
-    except:
-        list1.append(' ')
+for i in list(df1.index):
+    i = str(i)
+    p = pd.Period(i,freq='W')
+    p1 = str(p).split('/')
+    p2 = p1[1]
+    list1.append(p2)
 
-    try:
-        number2 = d2[i]
-        list2.append(number2)
-    except:
-        list2.append(' ')
 
-    try:
-        number3 = d3[i]
-        list3.append(number3)
-    except:
-        list3.append(' ')
+# df2['时间周期'] = list1
+#
+# df2 = df2.drop_duplicates(subset=['时间周期'], keep='first')
+# print(df2)
+# df2.to_csv('data.csv',encoding='utf-8-sig')
+# df2.index = pd.to_datetime(list1)
+# new_df1 = df2['2022-08-11':]
+# new_df1.to_csv('阶段三.csv',encoding='utf-8-sig')
+new_df = df1['Reach'].resample('2W').mean()
+# new_df1 = new_df['2022-08-14':'2022-10-02']
+print(new_df)
+new_df.to_csv('data.csv',encoding='utf-8-sig')
 
-df2['Replies'] = list1
-df2['Retweets'] = list2
-df2['Likes'] = list3
-df2.pop('Replies')  # 删除备注列
-df2.pop('Retweets')  # 删除备注列
-df2.pop('Likes')  # 删除备注列
-df2.insert(22, 'Replies', list1)  # 插入备注列
-df2.insert(23, 'Retweets', list2)  # 插入备注列
-df2.insert(24, 'Likes', list3)  # 插入备注列
-df2.to_csv('塔科夫.csv',encoding='utf-8-sig',index=False)
+# plt.figure(figsize=(12,9),dpi=300)
+# plt.rcParams['font.sans-serif'] = ['SimHei']
+# plt.plot(new_df, color='#3498DB', label='发布推文')
+# plt.legend()
+# plt.title('近段时间内-发布推文')
+# plt.xlabel('时间')
+# plt.ylabel('发布推文')
+# plt.grid()
+# plt.savefig('发布推文.png')
+# plt.show()
